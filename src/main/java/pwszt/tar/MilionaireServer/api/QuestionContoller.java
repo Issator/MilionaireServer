@@ -8,7 +8,7 @@ import pwszt.tar.MilionaireServer.service.QuestionService;
 
 import java.util.HashMap;
 
-@RequestMapping("millionaire/")
+@RequestMapping("millionaire/question/")
 @RestController
 public class QuestionContoller {
 
@@ -19,12 +19,12 @@ public class QuestionContoller {
         this.questionService = questionService;
     }
 
-    @GetMapping(path = "getQuestion/{id}")
+    @GetMapping(path = "{id}")
     public Question getQuestionById(@PathVariable("id") int id){
         return  questionService.loadQuestion(id);
     }
 
-    @PostMapping(path = "checkQuestion")
+    @PostMapping(path = "check")
     public HashMap checkQuestion(QuestionCheckBody questionCheckBody){
         return questionService.checkQuestion(questionCheckBody);
     }

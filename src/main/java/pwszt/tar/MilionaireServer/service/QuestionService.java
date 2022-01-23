@@ -25,7 +25,7 @@ public class QuestionService {
         try {
             Random random = new Random();
             BufferedReader br = new BufferedReader(
-                    new FileReader("bazy/" + id + ".csv")
+                    new FileReader("baza/questions/" + id + ".csv")
             );
 
             String line;
@@ -44,7 +44,7 @@ public class QuestionService {
 
                     String [] ans = {data[2],data[3],data[4],data[5]};
                     int correct = Integer.parseInt(data[6]);
-                    Question question = new Question(qId,data[1],ans);
+                    Question question = new Question(qId,data[1],ans,correct);
                     br.close();
                     return questionData.sendQuestion(question);
                 }
@@ -56,13 +56,14 @@ public class QuestionService {
         return null;
     }
 
+    // SPRAWDZ ODPOWIEDZ
     public HashMap checkQuestion(QuestionCheckBody answer) {
 
         HashMap<String, String> serverAnswer = new HashMap<>();
         String isCorrect = "false";
         try{
             BufferedReader br = new BufferedReader(
-                    new FileReader("bazy/" + answer.getFileId() + ".csv")
+                    new FileReader("baza/questions/" + answer.getFileId() + ".csv")
             );
 
             String line;
@@ -100,4 +101,5 @@ public class QuestionService {
 
         return null;
     }
+
 }
