@@ -37,7 +37,7 @@ public class PlayerController {
     }
 
     @GetMapping(path = "delete/{id}")
-    public HashMap detelePlayerById(@PathVariable("id") UUID id){
+    public HashMap deletePlayerById(@PathVariable("id") UUID id){
         return playerService.deletePlayerById(id);
     }
 

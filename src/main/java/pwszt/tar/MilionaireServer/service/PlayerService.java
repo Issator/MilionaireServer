@@ -28,7 +28,12 @@ public class PlayerService {
 
     }
 
-    // DODAJ GRACZA
+
+    /**
+     * Add Player to databse
+     * @param playerLoginBody Player nick and password
+     * @return Server answer about adding Player
+     */
     public Player addPlayer(PlayerLoginBody playerLoginBody){
         UUID id = UUID.randomUUID();
         Player player = new Player(id,playerLoginBody.getNick(),playerLoginBody.getPassword());
@@ -37,12 +42,19 @@ public class PlayerService {
         return playerData.returnPlayer(player);
     }
 
-    // WYPISZ GRACZY
+    /**
+     * Get list of all players
+     * @return Player database
+     */
     public List getPlayers(){
         return PlayerDB;
     }
 
-    // USUN GRACZA
+    /**
+     * Delete Player by UUID
+     * @param id id of Player to delete from database
+     * @return Server answer about deleted Player
+     */
     public HashMap deletePlayerById(UUID id){
         HashMap<String, String> serverAnswer = new HashMap<>();
 
@@ -62,7 +74,12 @@ public class PlayerService {
         return playerData.deletePlayerAnswer(serverAnswer);
     }
 
-    // ZNAJDZ GRACZA
+
+    /**
+     * Find player by his nick and password. If Player don't exist, return null
+     * @param playerLoginBody Player login and password
+     * @return found Player or null if not exist
+     */
     public Optional<Player> getPlayerByLoginBody(PlayerLoginBody playerLoginBody){
 
         return  PlayerDB.stream()
@@ -72,7 +89,11 @@ public class PlayerService {
                 .findFirst();
     }
 
-    // ZMIEN DANE GRACZA
+    /**
+     * Update information about Player. Nick and password can be changed, but UUID must stay the same
+     * @param player New Player nick and/or password with current UUID
+     * @return Server answer about changed data
+     */
     public Player updatePlayer(Player player){
         Player toEdit   =   PlayerDB.stream()
                                     .filter(p -> p.getId().equals(player.getId()))
@@ -86,7 +107,12 @@ public class PlayerService {
         return toEdit;
     }
 
-    //EDYTUJ PLIK
+
+    /**
+     * Save Player in database file. If added successfully, function will return 0. In case of error, will return -1
+     * @param player Player to add
+     * @return 0 if added, -1 if error occurred
+     */
     public int addPlayerToFile(Player player){
             try {
                 FileWriter fw = new FileWriter("baza/players.csv",true);
@@ -108,7 +134,11 @@ public class PlayerService {
             return 0;
     }
 
-    // POBIERANIE GRACZY
+
+    /**
+     * Get players form database file and save it as a ArrayList
+     * @return ArrayList of Players
+     */
     public List<Player> getPlayersFromFile(){
         List<Player> playerList = new ArrayList<>();
         try {
@@ -134,7 +164,10 @@ public class PlayerService {
         return playerList;
     }
 
-    //AKTUALIZOWANIE BAZY GRACZY
+
+    /**
+     * Update database files with server database
+     */
     public void updatePlayerFile(){
         try {
             FileWriter fw = new FileWriter("baza/players.csv");

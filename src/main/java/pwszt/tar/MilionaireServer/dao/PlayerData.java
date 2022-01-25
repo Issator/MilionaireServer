@@ -8,10 +8,20 @@ import java.util.HashMap;
 @Repository("playerDao")
 public class PlayerData {
 
+    /**
+     * Return Player as an server answer
+     * @param player Player to send
+     * @return Player information
+     */
     public Player returnPlayer(Player player){
         return player;
     }
 
+    /**
+     * Return answer if given player has been found and deleted
+     * @param answer Server generated answer
+     * @return Server answer
+     */
     public HashMap deletePlayerAnswer(HashMap answer){
         return answer;
     }

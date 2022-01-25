@@ -21,6 +21,12 @@ public class QuestionService {
         this.questionData = questionData;
     }
 
+    /**
+     * Load random Question from selected file
+     * @see Question
+     * @param id file number
+     * @return random Question
+     */
     public Question loadQuestion(int id){
         try {
             Random random = new Random();
@@ -56,7 +62,13 @@ public class QuestionService {
         return null;
     }
 
-    // SPRAWDZ ODPOWIEDZ
+    /**
+     * Check if given answer is correct
+     * @see Question
+     * @see QuestionCheckBody
+     * @param answer QuestionCheckBody of given answer
+     * @return false or true server answer
+     */
     public HashMap checkQuestion(QuestionCheckBody answer) {
 
         HashMap<String, String> serverAnswer = new HashMap<>();

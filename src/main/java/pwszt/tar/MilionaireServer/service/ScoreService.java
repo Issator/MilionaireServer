@@ -26,6 +26,10 @@ public class ScoreService {
         }
     }
 
+    /**
+     * Get all scores form server
+     * @return score List
+     */
     public HashMap getScores(){
         HashMap serverAnswer = new HashMap();
         serverAnswer.put("scores",ScoresDB);
@@ -33,12 +37,22 @@ public class ScoreService {
 
     }
 
+    /**
+     * add score to server database
+     * @param score score to add
+     * @return server answer od conformed add
+     */
     public ScoreLabel addScore(ScoreLabel score){
         ScoresDB.add(score);
         addScoreToFile(score);
         return scoreData.returnScore(score);
     }
 
+    /**
+     * save score in database file. If added successfully, function will return 0. In case of error, will return -1
+     * @param scoreLabel score to save
+     * @return 0 if added, -1 if error occurred
+     */
     public int addScoreToFile(ScoreLabel scoreLabel){
         try {
             FileWriter fw = new FileWriter("baza/scores.csv",true);
@@ -60,6 +74,10 @@ public class ScoreService {
         return 0;
     }
 
+    /**
+     * Get scores from database file and save it on server database
+     * @return ArrayList of scores
+     */
     public List<ScoreLabel> getScoresFromFile(){
         List<ScoreLabel> scoreList = new ArrayList<>();
         try {
