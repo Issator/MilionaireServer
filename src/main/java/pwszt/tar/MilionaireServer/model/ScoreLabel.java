@@ -1,5 +1,8 @@
 package pwszt.tar.MilionaireServer.model;
 
+/**
+ * Class use for story information about Player score
+ */
 public class ScoreLabel {
     private String nick;
     private int score;

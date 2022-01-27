@@ -2,6 +2,9 @@ package pwszt.tar.MilionaireServer.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Class Question is used to hold data about question and answers
+ */
 public class Question {
 
     private int id;

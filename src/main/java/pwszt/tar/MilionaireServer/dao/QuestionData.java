@@ -5,6 +5,10 @@ import pwszt.tar.MilionaireServer.model.Question;
 
 import java.util.HashMap;
 
+/**
+ * Class used to return QuestionService answers
+ * @see pwszt.tar.MilionaireServer.service.QuestionService
+ */
 @Repository("questionDao")
 public class QuestionData {
     /**

@@ -2,13 +2,16 @@ package pwszt.tar.MilionaireServer.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Class holding data necessary for client to check if Question answer is correct
+ */
 public class QuestionCheckBody {
     private int questionId;
     private int fileId;
     private int answer;
 
     /**
-     * Class holding data nessesery for client to check if Question answer is correct
+     * Class holding data necessary for client to check if Question answer is correct
      * @see Question
      * @param questionId id of question
      * @param fileId id of file/number of question in array

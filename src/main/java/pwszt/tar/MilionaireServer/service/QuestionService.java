@@ -12,6 +12,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * Service of all Question data
+ * @see Question
+ * @see pwszt.tar.MilionaireServer.api.QuestionContoller
+ * @see QuestionData
+ */
 @Service
 public class QuestionService {
     private final QuestionData questionData;

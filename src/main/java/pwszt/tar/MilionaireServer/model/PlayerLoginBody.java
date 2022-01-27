@@ -2,6 +2,9 @@ package pwszt.tar.MilionaireServer.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Temporary Player like class used for Client-Server communication
+ */
 public class PlayerLoginBody {
     private String nick;
     private String password;

@@ -11,6 +11,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Class used to Control Player requests
+ * @see Player
+ * @see PlayerService
+ */
 @RequestMapping("millionaire/player/")
 @RestController
 public class PlayerController {

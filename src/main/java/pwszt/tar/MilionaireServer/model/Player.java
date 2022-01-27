@@ -2,6 +2,9 @@ package pwszt.tar.MilionaireServer.model;
 
 import java.util.UUID;
 
+/**
+ * Class used to construct a new player with given UUID, nick and password
+ */
 public class Player {
     private UUID id;
     private String nick;

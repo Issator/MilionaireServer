@@ -9,7 +9,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * service of all Score data
+ * @see ScoreLabel
+ * @see pwszt.tar.MilionaireServer.api.ScoresController
+ * @see ScoreData
+ */
 @Service
 public class ScoreService {
     private final ScoreData scoreData;
@@ -100,5 +107,49 @@ public class ScoreService {
             return null;
         }
         return scoreList;
+    }
+
+    /**
+     * Update database Scores file with server database
+     */
+    public void updateScoreFile(){
+        try {
+            FileWriter fw = new FileWriter("baza/scores.csv");
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw);
+            for (ScoreLabel scoreLabel : ScoresDB){
+                String toSave = scoreLabel.getNick() + ";" +
+                        scoreLabel.getScore();
+
+                out.println(toSave);
+            }
+            out.close();
+            bw.close();
+            fw.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public HashMap deleteScore(ScoreLabel scoreLabel){
+        HashMap<String, String> serverAnswer = new HashMap<>();
+
+        Optional<ScoreLabel> toDeleteScoreLabel;
+        toDeleteScoreLabel = ScoresDB.stream()
+                                     .filter(score ->
+                                             score.getNick().equals(scoreLabel.getNick()) &&
+                                             score.getScore() == scoreLabel.getScore())
+                                     .findFirst();
+
+        if(toDeleteScoreLabel.isEmpty()){
+            serverAnswer.put("isExist","false");
+            serverAnswer.put("isDeleted","false");
+        } else {
+            ScoresDB.remove(toDeleteScoreLabel.get());
+            serverAnswer.put("isExist","true");
+            serverAnswer.put("isDeleted","true");
+            updateScoreFile();
+        }
+        return scoreData.deleteScoreAnswer(serverAnswer);
     }
 }

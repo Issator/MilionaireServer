@@ -10,6 +10,10 @@ import pwszt.tar.MilionaireServer.service.ScoreService;
 
 import java.util.HashMap;
 
+/**
+ * Class used to control Score requests
+ * @see ScoreLabel
+ */
 @RequestMapping("millionaire/scores/")
 @RestController
 public class ScoresController {

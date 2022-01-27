@@ -8,6 +8,11 @@ import pwszt.tar.MilionaireServer.service.QuestionService;
 
 import java.util.HashMap;
 
+/**
+ * Class used to control Question requests
+ * @see Question
+ * @see QuestionService
+ */
 @RequestMapping("millionaire/question/")
 @RestController
 public class QuestionContoller {

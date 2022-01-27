@@ -5,6 +5,10 @@ import pwszt.tar.MilionaireServer.model.Player;
 
 import java.util.HashMap;
 
+/**
+ * Class used to return PlayerService answers
+ * @see pwszt.tar.MilionaireServer.service.PlayerService
+ */
 @Repository("playerDao")
 public class PlayerData {
 

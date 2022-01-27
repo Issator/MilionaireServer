@@ -9,6 +9,12 @@ import pwszt.tar.MilionaireServer.model.PlayerLoginBody;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Service of all Player data
+ * @see Player
+ * @see pwszt.tar.MilionaireServer.api.PlayerController
+ * @see PlayerData
+ */
 @Service
 public class PlayerService {
 
@@ -69,14 +75,15 @@ public class PlayerService {
             PlayerDB.remove(toDeletePlayer.get());
             serverAnswer.put("isExist","true");
             serverAnswer.put("isDeleted","true");
+            updatePlayerFile();
         }
-        updatePlayerFile();
         return playerData.deletePlayerAnswer(serverAnswer);
     }
 
 
     /**
-     * Find player by his nick and password. If Player don't exist, return null
+     * Find player by his nick and password. If Player don't exist, return null.
+     * Can be used as a client log in statement
      * @param playerLoginBody Player login and password
      * @return found Player or null if not exist
      */
@@ -166,7 +173,7 @@ public class PlayerService {
 
 
     /**
-     * Update database files with server database
+     * Update database Player file with server database
      */
     public void updatePlayerFile(){
         try {
